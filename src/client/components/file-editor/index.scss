@@ -1,0 +1,22 @@
+@import 'color';
+
+$menu-border-radius: 5px;
+
+.file-editor > .edit-menu {
+  border-radius: $menu-border-radius;
+  box-shadow: 2px 2px 5px #111111;
+}
+
+.file-editor > .edit-menu .edit-menu-content {
+  border: solid #AAAAAA 1px;
+  background: $background;
+  border-radius: $menu-border-radius;
+  padding: 1em;
+}
+
+.file-editor > button.edit-btn {
+  margin: 0 0.5em;
+  height: 40px;
+  padding: 5px;
+  border-radius: 10px;
+}

@@ -1,0 +1,33 @@
+env:
+  node: true
+  browser: true
+extends: 
+  - standard
+  - standard-react
+parser: babel-eslint
+rules:
+  import/first:
+    - allow
+  jsx-quotes:
+    - error
+    - prefer-double
+  array-bracket-spacing: 
+    - error
+    - always
+  arrow-parens: 
+    - error
+  curly: 
+    - error
+    - all
+  max-len: 
+    - error
+    - 
+      ignoreComments: true
+      ignoreRegExpLiterals: true
+      ignoreUrls: true
+  no-lonely-if: 
+    - error
+  no-multi-spaces: 
+    - error
+    - 
+      ignoreEOLComments: true

@@ -1,0 +1,19 @@
+.image-files {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly
+}
+
+.image-files > .image {
+  width: 45%;
+}
+
+.image-files > .image > a > img {
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .image-files > .image {
+    width: 100%;
+  }
+}

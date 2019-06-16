@@ -1,0 +1,27 @@
+.paste-files {
+  max-width: 1024px;
+  margin: auto;
+}
+
+.paste-files > .paste {
+  display: flex;
+  justify-content: center;
+  margin: 0.5em 0;
+}
+
+.paste-files > .paste > a {
+  display: flex;
+  align-items: center;
+}
+
+.paste-files > .paste > .file-editor {
+  position: relative;
+}
+
+.paste-files > .paste > .file-editor > .edit-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5em);
+  width: 250px;
+  z-index: 1;
+}

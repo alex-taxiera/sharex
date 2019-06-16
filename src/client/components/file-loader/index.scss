@@ -1,0 +1,17 @@
+@import 'color';
+
+.file-loader {
+  margin: 1em 0;
+}
+
+.more-btn,
+.refresh-btn {
+  display: flex;
+}
+
+.more-btn > button,
+.refresh-btn > button {
+  max-width: 100%;
+  width: 300px;
+  margin: auto;
+}

@@ -1,0 +1,15 @@
+@import 'layers', 'color';
+
+footer.footer {
+  z-index: $ui;
+  position: sticky;
+  bottom: 0;
+  background: $accent;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer h4 {
+  margin: 0.5em 0;
+}

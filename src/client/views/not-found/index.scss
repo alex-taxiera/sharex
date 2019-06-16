@@ -1,0 +1,12 @@
+@import 'color';
+
+.not-found {
+  text-align: center;
+}
+
+.not-found > h1 {
+  background: -webkit-linear-gradient($accent, $text);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 90px;
+}

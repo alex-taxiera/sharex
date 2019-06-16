@@ -1,0 +1,66 @@
+@import 'color';
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, button,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html,
+body,
+#app {
+  height: 100vh;
+  overflow: auto;
+}
+
+h1 {
+	margin: 0.67em 0;
+}
+
+h2 {
+	margin: 0.83em 0;
+}
+
+h3 {
+	margin: 1em 0;
+}
+
+h4 {
+  margin: 1.33em 0;
+}
+
+h5 {
+  margin: 1.67em 0;
+}
+
+h6 {
+  margin: 2.33em 0;
+}
+
+button {
+  cursor: pointer;
+  background: $text;
+  align-items: inherit;
+  display: block;
+  font: inherit;
+  color: $dark-text;
+  border-radius: 3px;
+  padding: 0.5em;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button:hover {
+  background: white;
+}

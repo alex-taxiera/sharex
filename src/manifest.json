@@ -1,0 +1,18 @@
+{
+  "filename": "manifest.json",
+  "short_name": "SSXS",
+  "name": "Simple ShareX Server",
+  "description": "A simple file server/website made for ShareX with polka and react.",
+  "theme_color": "maroon",
+  "background_color": "#575757",
+  "display": "standalone",
+  "keywords": [
+    "react",
+    "ssr",
+    "polka",
+    "express",
+    "redux",
+    "sharex",
+    "files"
+  ]
+}

@@ -1,0 +1,45 @@
+@import 'color';
+
+html {
+  font-family: sans-serif;
+  text-size-adjust: 100%;
+  font-size: 16px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+body {
+  color: $text;
+  background-color: $background;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-wrap: break-word;
+  font-kerning: normal;
+  font-feature-settings: "kern", "liga", "clig", "calt";
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#app {
+  display: flex;
+  flex-flow: column;
+}
+
+main.container {
+  flex-grow: 2;
+  margin: 1em;
+}

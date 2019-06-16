@@ -1,0 +1,15 @@
+@import 'layers', 'color';
+
+header.header {
+  z-index: $ui;
+  position: sticky;
+  top: 0;
+  background: $accent;
+  width: 100%;
+  box-shadow: 0 0 12px black;
+}
+
+.header > h1 {
+  width: 100%;
+  text-align: center;
+}

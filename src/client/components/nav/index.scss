@@ -1,0 +1,23 @@
+.nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 920px) {
+  .nav {
+    position: unset;
+    margin: auto;
+    height: unset;
+  }
+
+  .nav > a > h3 {
+    margin-top: 0
+  }
+}
