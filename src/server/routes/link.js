@@ -24,7 +24,7 @@ export function post (req, res) {
     let response
     try {
       await saveFile(req, 'link', `${fileName}.html`, { name: `${fileName}.html`, site: link })
-      response = new ServerResponse(`${req.headers.host}/${fileName}`)
+      response = new ServerResponse(`http://${req.headers.host}/${fileName}`)
     } catch (error) {
       response = new ServerResponse(error, 500)
     }
