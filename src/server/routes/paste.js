@@ -18,7 +18,7 @@ export async function post (req, res) {
     const text = (await fs.readFile(files.fdata.path)).toString()
     await fs.writeFile(filePath, pasteTemplate('untitled', text))
     await saveFile(req, 'paste', filePath, { name: filePath })
-    response = new ServerResponse(`http://${req.headers.host}/${fileName}`)
+    response = new ServerResponse(`${req.protocol}${req.headers.host}/${fileName}`)
   } catch (error) {
     response = new ServerResponse(error, 500)
   }
