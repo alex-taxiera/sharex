@@ -1,23 +1,30 @@
 import Hashids from 'hashids'
 
-import * as logger from '../utils/logger'
-import { ServerResponse } from '../utils/respond'
+import * as logger from '../modules/logger'
+import {
+  send,
+  ErrorResponse
+} from '../modules/response'
 
 const hash = new Hashids()
 
 export async function reqLogger (req, res, next) {
   if (req.method === 'POST') {
     try {
-      req.id = await req.db._knex('request').insert({
+      const [ id ] = await req.db.post('request', {
         ip: req.ip,
         user: req.user,
         url: req.url
       })
+
+      req.id = id
       req.hash = hash.encode(10000 + req.id)
+      next()
     } catch (error) {
       logger.error('error with db:', error)
-      return new ServerResponse(error, 500).send(res)
+      send(res, new ErrorResponse(error))
     }
+  } else {
+    next()
   }
-  next()
 }

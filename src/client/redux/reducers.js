@@ -38,10 +38,10 @@ const success = (state = INITIAL_STATE, action) => {
     ...state,
     isFetching: false,
     isUpdating: false,
-    end: action.tail && action.files.length === 0,
-    data: action.tail
-      ? state.data.concat(action.files)
-      : action.files.concat(state.data)
+    end: (action.tail || !action.head) && action.files.length === 0,
+    data: action.head
+      ? action.files.concat(state.data)
+      : state.data.concat(action.files)
   }
 }
 

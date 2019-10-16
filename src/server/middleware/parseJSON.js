@@ -1,6 +1,15 @@
+import {
+  send,
+  ErrorResponse
+} from '../modules/response'
+
 export async function parseJSON (req, res, next) {
   if (req.headers['content-type'] === 'application/json') {
-    req.json = await readJSON(req)
+    try {
+      req.json = await readJSON(req)
+    } catch (error) {
+      send(new ErrorResponse(error))
+    }
   }
   next()
 }
@@ -10,7 +19,13 @@ async function readJSON (req) {
     const chunks = []
     req.on('data', (chunk) => chunks.push(chunk))
     req.on('end', () =>
-      resolve(JSON.parse(Buffer.concat(chunks).toString() || '{}'))
+      resolve(
+        JSON.parse(
+          Buffer.concat(chunks)
+            .toString() || '{}'
+        )
+      )
     )
+    req.on('error', reject)
   })
 }

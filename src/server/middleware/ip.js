@@ -1,4 +1,4 @@
-import * as logger from '../utils/logger'
+import * as logger from '../modules/logger'
 
 export function ip (req, res, next) {
   req.ip = req.headers['x-forwarded-for'] ||

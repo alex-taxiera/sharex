@@ -33,10 +33,11 @@ export function ProtectedRequestForm ({
   ], async () => {
     if (canSubmit) {
       setFormError(null)
-      request(Object.values(fields).reduce((store, { name, value }) => {
-        store[name] = value
-        return store
-      }, {}))
+      request(Object.values(fields)
+        .reduce((store, { name, value }) => {
+          store[name] = value
+          return store
+        }, {}))
     } else {
       setFormError(Error('ERROR'))
     }
@@ -50,30 +51,31 @@ export function ProtectedRequestForm ({
       onSubmit={handleSubmit}
     >
       {
-        Object.values(fields).map((field, key) => (
-          <StyledInput
-            key={key}
-            name={field.name}
-            id={formId + field.name}
-            label={field.label}
-            type={field.type}
-            isRequired={field.isRequired}
-            value={field.value}
-            onChange={handleChange}
-            accentColor="maroon"
-            wrapperStyle={{
-              color: 'maroon'
-            }}
-            inputWrapperStyle={{
-              color: '#333333',
-              background: '#EEEEEE',
-              boxShadow: '0 0 5px #EEEEEE'
-            }}
-            labelStyle={{
-              color: '#DDDDDD'
-            }}
-          />
-        ))
+        Object.values(fields)
+          .map((field, key) => (
+            <StyledInput
+              key={key}
+              name={field.name}
+              id={formId + field.name}
+              label={field.label}
+              type={field.type}
+              isRequired={field.isRequired}
+              value={field.value}
+              onChange={handleChange}
+              accentColor="maroon"
+              wrapperStyle={{
+                color: 'maroon'
+              }}
+              inputWrapperStyle={{
+                color: '#333333',
+                background: '#EEEEEE',
+                boxShadow: '0 0 5px #EEEEEE'
+              }}
+              labelStyle={{
+                color: '#DDDDDD'
+              }}
+            />
+          ))
       }
       {
         formError

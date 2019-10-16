@@ -1,7 +1,7 @@
 import format from 'dateformat'
 import colors from 'colors/safe'
 
-export function log (content = [], color = 'white') {
+export const log = (content = [], color = 'white') => {
   if (!Array.isArray(content)) {
     content = [ content ]
   }

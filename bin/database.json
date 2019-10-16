@@ -1,0 +1,83 @@
+[
+  {
+    "name": "user",
+    "columns": [
+      {
+        "name": "id",
+        "type": "increments",
+        "options": {
+          "primary": true,
+          "notNullable": true
+        }
+      },
+      {
+        "name": "username",
+        "type": "string",
+        "params": [
+          100
+        ],
+        "options": {
+          "notNullable": true
+        }
+      },
+      {
+        "name": "password",
+        "type": "string",
+        "params": [
+          100
+        ],
+        "options": {
+          "notNullable": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "request",
+    "columns": [
+      {
+        "name": "id",
+        "type": "increments",
+        "options": {
+          "primary": true,
+          "notNullable": true
+        }
+      },
+      {
+        "name": "ip",
+        "type": "string",
+        "params": [
+          50
+        ],
+        "options": {
+          "notNullable": true
+        }
+      },
+      {
+        "name": "url",
+        "type": "string",
+        "params": [
+          50
+        ],
+        "options": {
+          "notNullable": true
+        }
+      },
+      {
+        "name": "file",
+        "type": "string",
+        "params": [
+          50
+        ]
+      },
+      {
+        "name": "user",
+        "type": "foreign",
+        "options": {
+          "references": "id",
+          "inTable": "user"
+        }
+      }
+    ]
+  }
+]

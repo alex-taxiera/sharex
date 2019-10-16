@@ -26,7 +26,7 @@ function Links ({ links }) {
               href={link.name.split('.')[0]}
               target="_blank"
             >
-              {link.site}
+              {link.url}
             </a>
             <CopyButton
               wrapperClass="copy-btn-links"

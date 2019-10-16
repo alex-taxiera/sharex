@@ -9,13 +9,13 @@ const mapDispatchToProps = (dispatch, { files, loader }) => {
   return {
     tail: () => dispatch(
       files.data.length > 0
-        ? loader(files.data[files.data.length - 1].id)
+        ? loader({ tail: files.data[files.data.length - 1].id })
         : loader()
     ),
     head: () => dispatch(
       files.data.length > 0
-        ? loader(files.data[0].id, { tail: false })
-        : loader({ tail: false })
+        ? loader({ head: files.data[0].id })
+        : loader({ ascending: true })
     )
   }
 }

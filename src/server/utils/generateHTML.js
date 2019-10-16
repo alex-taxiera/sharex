@@ -11,13 +11,12 @@ import { join } from 'path'
 import { App } from '../../client/app'
 import { createStore } from '../../client/redux'
 
-const extractor = new ChunkExtractor({
-  statsFile: join(__dirname, '../../../dist/loadable-stats.json'),
-  entrypoints: [ 'main' ]
-})
-
-export function generateHTML (req) {
-  const store = createStore(req.initialState)
+export function generateHTML (req, state) {
+  const extractor = new ChunkExtractor({
+    statsFile: join(__dirname, '../../../dist/loadable-stats.json'),
+    entrypoints: [ 'main' ]
+  })
+  const store = createStore(state)
   const helmetContext = {}
 
   const jsx = (

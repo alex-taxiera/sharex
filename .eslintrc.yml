@@ -25,6 +25,10 @@ rules:
       ignoreComments: true
       ignoreRegExpLiterals: true
       ignoreUrls: true
+  newline-per-chained-call:
+    - error
+    -
+      ignoreChainWithDepth: 1
   no-lonely-if: 
     - error
   no-multi-spaces: 

@@ -1,8 +1,8 @@
 import { IncomingForm } from 'formidable'
 
-import * as logger from './logger'
+import * as logger from '../modules/logger'
 
-export function parseFilesFromForm (req) {
+export function parseFormData (req) {
   return new Promise((resolve, reject) => {
     const form = new IncomingForm()
     form.parse(req, (err, fields, files) => {
@@ -10,7 +10,10 @@ export function parseFilesFromForm (req) {
         logger.error('error parsing form data:', err)
         reject(err)
       } else {
-        resolve(files)
+        resolve({
+          fields,
+          files
+        })
       }
     })
   })

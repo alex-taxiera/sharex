@@ -47,7 +47,9 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: [ join(__dirname, 'src/client/styles') ]
+              sassOptions: {
+                includePaths: [ join(__dirname, 'src/client/styles') ]
+              }
             }
           }
         ]

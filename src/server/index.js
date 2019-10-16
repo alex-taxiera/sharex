@@ -2,34 +2,30 @@ import { join } from 'path'
 import polka from 'polka'
 import staticserve from 'serve-static'
 
-import * as logger from './utils/logger'
-import * as auth from './middleware/auth'
-import { fetchInitialReduxState } from './middleware/fetchInitialReduxState'
+import * as logger from './modules/logger'
 import { parseJSON } from './middleware/parseJSON'
-import { masterPassword } from './middleware/masterPassword'
-import { database } from './middleware/database'
+import { middleware as database } from './modules/database'
 import { ip } from './middleware/ip'
 import { reqLogger } from './middleware/reqLogger'
 
+import { fetchInitialReduxState } from './utils/fetchInitialReduxState'
 import { generateHTML } from './utils/generateHTML'
 
-import * as user from './routes/user'
-import * as image from './routes/image'
-import * as link from './routes/link'
-import * as paste from './routes/paste'
+import { api } from './routes'
 
 import * as config from '../config'
 
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
+  require('dotenv')
+    .config()
 }
 
 const {
-  DB_HOST,
-  DB_NAME,
-  DB_USER,
-  DB_CLIENT,
-  AUTH_TOKEN
+  SHAREX_DB_HOST,
+  SHAREX_DB_NAME,
+  SHAREX_DB_USER,
+  SHAREX_DB_PASS,
+  SHAREX_DB_CLIENT
 } = process.env
 
 const {
@@ -38,7 +34,10 @@ const {
   EXTENSIONS
 } = config
 
-const app = polka()
+const app = polka({
+  onNoMatch: async (req, res) =>
+    res.end(generateHTML(req, await fetchInitialReduxState(req)))
+})
 
 app
   .use(staticserve(join(__dirname, '../../dist')))
@@ -48,33 +47,18 @@ app
 app
   .use(parseJSON)
   .use(database({
-    client: DB_CLIENT,
-    connectionInfo: {
-      host: DB_HOST,
-      user: DB_USER,
-      database: DB_NAME
+    client: SHAREX_DB_CLIENT,
+    connection: {
+      host: SHAREX_DB_HOST,
+      user: SHAREX_DB_USER,
+      database: SHAREX_DB_NAME,
+      password: SHAREX_DB_PASS
     }
   }))
   .use(ip)
-  .use(auth.setup(AUTH_TOKEN))
   .use(reqLogger)
 
-app.put('/api/user/:key', masterPassword, user.put)
-app.post('/api/user', masterPassword, user.post)
-
-app.get('/api/link', link.get)
-app.post('/api/link', auth.enforce, link.post)
-
-app.get('/api/paste', paste.get)
-app.put('/api/paste/:key', masterPassword, paste.put)
-app.post('/api/paste', auth.enforce, paste.post)
-
-app.get('/api/image', image.get)
-app.post('/api/image', auth.enforce, image.post)
-
-app.get('*', fetchInitialReduxState, async (req, res) => {
-  res.end(generateHTML(req))
-})
+app.use('/api', api)
 
 app.listen(PORT, (err) => {
   if (err) {

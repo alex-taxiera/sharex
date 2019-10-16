@@ -22,13 +22,13 @@ function Pastes ({ pastes }) {
         className="paste-files"
         files={pastes}
         loader={fetchPastes}
-        display={(paste, key) => (
+        display={(paste, key) => console.log('paste :', paste) || (
           <div className="paste" key={key}>
             <a
               href={paste.name}
               target="_blank"
             >
-              {paste.title}
+              {paste.name}
             </a>
             <FileEditor
               files={pastes}
@@ -39,7 +39,7 @@ function Pastes ({ pastes }) {
                   name: 'title',
                   label: 'Title',
                   type: 'text',
-                  value: paste.title,
+                  value: paste.name,
                   isRequired: true
                 }
               ]}
